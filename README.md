@@ -13,14 +13,14 @@ The intention of the package is to start a tick timer, controlled by overflow
 interrupts on Timer 0, to keep a ticks timer, available in the global
 variable `ticks`.
 
-`func enableTicks()`
+`public func enableTicks()`
 Activate Timer0 and an overflow interrupt to count ticks.
 Has the side effect of activating global interrupts.
 
-`func disableTicks()`
+`public func disableTicks()`
 simple integer number print
 
-`var ticks: UInt32`
+`public var ticks: UInt32`
 variable containing the current tick count, note you can reset this if you choose,
 just don't make assumptions if you do... the interrupt handler simply increments
 it every millisecond (acutally every 1.024 milliseconds)
@@ -33,7 +33,7 @@ one byte up to the next, when a somewhat inconsistent value could appear transie
 
 To avoid this, use...
 
-`func safeReadTicks() -> UInt32`
+`public func safeReadTicks() -> UInt32`
 
 ...which temporarily disables interrupts while copying the ticks value, then returns
 the results after resuming interrupts. That might possibly result in one overflow being missed

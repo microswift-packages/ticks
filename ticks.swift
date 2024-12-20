@@ -10,7 +10,7 @@ import ATmega328P
 // Uses Timer 0 so that timer can't be used for PWM or other uses while this library is
 // active.
 
-var ticks: UInt32 = 0
+public var ticks: UInt32 = 0
 
 @interruptHandler
 @_silgen_name("__vector_16")
@@ -18,14 +18,14 @@ func timer0Overflow() {
     ticks &+= 1
 }
 
-func safeReadTicks() -> UInt32 {
+public func safeReadTicks() -> UInt32 {
     ATmega328P.globalInterruptsEnabled = false
     let currentTicks = ticks
     ATmega328P.globalInterruptsEnabled = true
     return currentTicks
 }
 
-func enableTicks() {
+public func enableTicks() {
     ATmega328P.Tc0.tcnt0.registerValue = 0
     ATmega328P.Tc0.tccr0a.registerValue = 0
     ATmega328P.Tc0.tccr0b.registerValue = 4
@@ -33,7 +33,7 @@ func enableTicks() {
     ATmega328P.globalInterruptsEnabled = true
 }
 
-func disableTicks() {
+public func disableTicks() {
     ATmega328P.Tc0.tcnt0.registerValue = 0
     ATmega328P.Tc0.tccr0a.registerValue = 0
     ATmega328P.Tc0.tccr0b.registerValue = 0
