@@ -1,7 +1,6 @@
-import HAL
 import ATmega328P
 import serial
-import delay
+import ticks
 
 enableTicks()
 
