@@ -1,0 +1,6 @@
+files:
+- ticks.swift
+- Package.swift
+settings:
+  INCLUDE_PRINTF_FLT: 'no'
+  MISSING_RUNTIME_SHOW_WARNING: 'yes'
