@@ -1,3 +1,4 @@
 module ticks {
     export *
+    link "ticks"
 }
